@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="css\styles.css">
+    <script src="js\script.js"></script>
 </head>
 <body>
     <header class="main-header">
@@ -13,7 +14,7 @@
 
     <main>
         <!-- Left Content -->
-        <section>
+        <section class="noshrink">
             <!-- Introduction -->
             <article>
                 <p>BMI merupakan indikator yang dapat berguna untuk mengetahui kondisi tubuh kita</p>
@@ -37,7 +38,7 @@
                 </div>
 
                 <div>
-                    <button class="bg-btnhitung">Hitung BMI</button>
+                    <button type="button" class="bg-btnhitung" onclick="hitungBmi()">Hitung BMI</button>
                     <button class="bg-btnreset">Reset</button>
                 </div>
             </form>
@@ -59,18 +60,11 @@
                     yang dihitung selain dengan berkonsultasi dengan pihak yang memenuhi syarat seperti 
                     dokter dan semacamnya</p>
             </article>
-
-            <!-- Information 2 -->
-            <article>
-                <p>Kalkulator ini hanya memberi Anda gambaran tentang perbandingan berat badan Anda 
-                    dengan nilai umum. Indeks Masa Tubuh (BMI) dihitung sebagai berat badan Anda (dalam kg) 
-                    dibagi dengan kuadrat tinggi badan Anda (dalam meter) atau BMI = kg/m<sup>2</sup></p>
-            </article>
         </section>
         
         <!-- Right Section -->
         <!-- Result -->
-        <section>
+        <section class="noshrink">
             <section class="result-section">
                 <header>
                     <h2>Hasil</h2>
@@ -83,13 +77,13 @@
 
             <!-- Hasil perhitungan BMI -->
             <article>
-                <p>(Ini Hasil)</p>
+                <p>Hasil BMI di antara </p>
             </article>
 
             <!-- Kesimpulan & saran berdasarkan hasil -->
             <article>
-                <p>Kesimpulan
-                <br/>Saran</p>
+                <p id="kesimpulan">Silakan isi data untuk menghitung BMI Anda</p>
+                <p id="saran"></p>
             </article>
         </section>
     </main>
@@ -98,5 +92,59 @@
         <span>Made by rendy @2025</span>
     </footer>
 
+    <script>
+        function hitungBmi() {
+            let berat = document.getElementById("input-berat").value
+            let tinggi = document.getElementById("input-tinggi").value/100
+            let hitungBmi = berat/(tinggi**2);
+            console.log(hitungBmi);
+            const hasil = document.getElementById('kesimpulan');
+            const tekssaran = document.getElementById('saran');
+
+            let kategori = "";
+            let note="";
+
+            if (hitungBmi < 18.5) {
+                kategori = "Berat Badan Kurang";
+                note=`Kekurangan berat badan bisa meningkatkan risiko masalah kesehatan, 
+                seperti kekurangan gizi dan penurunan sistem kekebalan tubuh. Cara menambah berat badan dapat
+                dilakukan dengan mengatur pola makan, mengkonsumsi makanan yang menambah masa otot seperti proten 
+                dan semacamnya, serta rutin berolahraga untuk melatih dan membentuk postur tubuh.`;
+
+            } else if (hitungBmi >= 18.5 && hitungBmi <= 24.9) {
+                kategori = "Normal (Ideal)";
+                note=`Berat badan Anda berada dalam rentang yang sehat dan proporsional 
+                dengan tinggi badan Anda. Meskipun BMI Anda normal, penting untuk tetap menjaga pola makan yang 
+                seimbang, berolahraga secara teratur, dan menjaga gaya hidup sehat untuk mempertahankan kondisi 
+                tubuh yang optimal.`;
+
+            } else if (hitungBmi >= 25.0 && hitungBmi <= 29.9) {
+                kategori = "Berat Badan Lebih";
+                note=`Cara terbaik untuk menurunkan berat badan adalah dengan mengatur pola kalori makanan yang
+                dikonsumsi dan berolahraga.`;
+
+            } else {
+                kategori = "Obesitas";
+                note=`Obesitas dapat meningkatkan risiko berbagai penyakit serius, seperti penyakit jantung, 
+                diabetes tipe 2, dan hipertensi.`;
+            }
+
+            document.getElementById("result-bmi").innerHTML = hitungBmi.toFixed(2);
+            hasil.textContent = "Anda berada dalam kategori " + kategori;
+            tekssaran.textContent=note;
+            clearform();
+        }
+
+        function clearform(){
+            document.getElementById("input-berat").value = "";
+            document.getElementById("input-usia").value = "";
+            document.getElementById("input-tinggi").value = "";
+        }
+
+        function resetBmi(){
+            clearform();
+            document.getElementById("result-bmi").innerHTML = 0;
+        }
+    </script>
 </body>
 </html>

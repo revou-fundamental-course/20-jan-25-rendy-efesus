@@ -7,12 +7,17 @@ main{
     padding: 32px;
 }
 
+.noshrink{
+    flex: 1;
+}
+
 footer{
     text-align: center;
 }
 
 .main-header{
     text-align: center;
+    background-color: #f5ebe0;
 }
 
 input[type=number] {
