@@ -1,1 +1,63 @@
 /* This is CSS file */
+
+main{
+    display: flex;
+    gap: 32px;
+    background-color: #f5ebe0;
+    padding: 32px;
+}
+
+footer{
+    text-align: center;
+}
+
+.main-header{
+    text-align: center;
+}
+
+input[type=number] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+  }
+
+form{
+    background-color: #90e0ef;
+    padding: 32px;
+}
+
+article{
+    text-align: justify;
+}
+
+button{
+    border: none;
+    padding: 8px;
+    color: antiquewhite;
+}
+
+.bg-btnhitung{
+    background-color: #004e64;
+}
+
+.bg-btnreset{
+    background-color: #e63946;
+}
+
+.form-group{
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 16px;
+}
+
+.result-section{
+    padding: 16px;
+    text-align: center;
+    background-color: #90e0ef;
+}
+
+#result-bmi{
+    font-size: xxx-large;
+    font-family: math;
+}
