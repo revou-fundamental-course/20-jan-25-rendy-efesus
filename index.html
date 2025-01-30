@@ -14,13 +14,13 @@
 
     <main>
         <!-- Left Content -->
-        <section class="noshrink">
+        <section class="noshrink"> <!--Agar column flex tidak auto shrink-->
             <!-- Introduction -->
             <article>
                 <p>BMI merupakan indikator yang dapat berguna untuk mengetahui kondisi tubuh kita</p>
             </article>
 
-            <!-- Form -->
+            <!-- Form Data Untuk Menghitung BMI -->
             <form>
                 <div class="form-group">
                     <label for="input-berat">Berat Badan (kg)</label>
@@ -64,12 +64,12 @@
         
         <!-- Right Section -->
         <!-- Result -->
-        <section class="noshrink">
+        <section class="noshrink"> <!--Agar column flex tidak auto shrink-->
+            <header>
+                <h2 class="main-header">Hasil</h2>
+            </header>
             <section class="result-section">
-                <header>
-                    <h2>Hasil</h2>
-                </header>
-    
+                <p id="tekskategori"></p>
                 <div>
                     <span id="result-bmi">0</span>
                 </div>
@@ -82,9 +82,14 @@
 
             <!-- Kesimpulan & saran berdasarkan hasil -->
             <article>
-                <p id="kesimpulan">Silakan isi data untuk menghitung BMI Anda</p>
+                <p id="kesimpulan">Data belum diinput</p>
                 <p id="saran"></p>
             </article>
+
+            <div>
+                <button type="button" class="bg-btnhasil">Konsultasi Ahli Gizi Via Aplikasi</button>
+                <button class="bg-btnhasil">Registrasi Online Ahli Gizi</button>
+            </div>
         </section>
     </main>
 
@@ -92,59 +97,8 @@
         <span>Made by rendy @2025</span>
     </footer>
 
-    <script>
-        function hitungBmi() {
-            let berat = document.getElementById("input-berat").value
-            let tinggi = document.getElementById("input-tinggi").value/100
-            let hitungBmi = berat/(tinggi**2);
-            console.log(hitungBmi);
-            const hasil = document.getElementById('kesimpulan');
-            const tekssaran = document.getElementById('saran');
-
-            let kategori = "";
-            let note="";
-
-            if (hitungBmi < 18.5) {
-                kategori = "Berat Badan Kurang";
-                note=`Kekurangan berat badan bisa meningkatkan risiko masalah kesehatan, 
-                seperti kekurangan gizi dan penurunan sistem kekebalan tubuh. Cara menambah berat badan dapat
-                dilakukan dengan mengatur pola makan, mengkonsumsi makanan yang menambah masa otot seperti proten 
-                dan semacamnya, serta rutin berolahraga untuk melatih dan membentuk postur tubuh.`;
-
-            } else if (hitungBmi >= 18.5 && hitungBmi <= 24.9) {
-                kategori = "Normal (Ideal)";
-                note=`Berat badan Anda berada dalam rentang yang sehat dan proporsional 
-                dengan tinggi badan Anda. Meskipun BMI Anda normal, penting untuk tetap menjaga pola makan yang 
-                seimbang, berolahraga secara teratur, dan menjaga gaya hidup sehat untuk mempertahankan kondisi 
-                tubuh yang optimal.`;
-
-            } else if (hitungBmi >= 25.0 && hitungBmi <= 29.9) {
-                kategori = "Berat Badan Lebih";
-                note=`Cara terbaik untuk menurunkan berat badan adalah dengan mengatur pola kalori makanan yang
-                dikonsumsi dan berolahraga.`;
-
-            } else {
-                kategori = "Obesitas";
-                note=`Obesitas dapat meningkatkan risiko berbagai penyakit serius, seperti penyakit jantung, 
-                diabetes tipe 2, dan hipertensi.`;
-            }
-
-            document.getElementById("result-bmi").innerHTML = hitungBmi.toFixed(2);
-            hasil.textContent = "Anda berada dalam kategori " + kategori;
-            tekssaran.textContent=note;
-            clearform();
-        }
-
-        function clearform(){
-            document.getElementById("input-berat").value = "";
-            document.getElementById("input-usia").value = "";
-            document.getElementById("input-tinggi").value = "";
-        }
-
-        function resetBmi(){
-            clearform();
-            document.getElementById("result-bmi").innerHTML = 0;
-        }
-    </script>
+    <!-- <script>
+        
+    </script> -->
 </body>
 </html>

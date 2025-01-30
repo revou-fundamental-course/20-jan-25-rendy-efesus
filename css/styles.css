@@ -42,6 +42,11 @@ button{
     color: antiquewhite;
 }
 
+.bg-btnhasil{
+    color: antiquewhite;
+    background-color: #004e64;
+}
+
 .bg-btnhitung{
     background-color: #004e64;
 }
